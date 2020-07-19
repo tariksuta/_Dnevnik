@@ -1,0 +1,80 @@
+﻿@using _eDnevnik.Data.EntityModel
+@model _eDnevnik.Web.ViewModel.IzostanaDodajUrediVM
+@{
+    ViewData["Title"] = "DodajUredi";
+}
+
+
+<form action="/Izostanak/Snimi">
+    <input type="text" hidden name="IzostanakID" value="@Model.Izostanak.ID" /><br />
+
+
+
+    <div class="form-group">
+        Napomena:<br />
+        <input type="text" name="Napomena" value="@Model.Izostanak.Napomena" class="form-control" />
+    </div>
+    <br />
+
+    <div class="form-group">
+        Datum izostanka:<br />
+        <input type="date" name="DatumIzostanka" value="@Model.Izostanak.DatumIzostanka" class="form-control" />
+    </div>
+    <br />
+
+    <div class="form-group">
+        Opravdan:<br />
+        <select name="Opravdan" class="form-control">
+            <option value="False" selected>Neopravdan</option>
+            <option value="True">Opravdan</option>
+        </select>
+    </div>
+    <br />
+
+    <div class="form-group">
+        Slusa predmet:<br />
+        <select name="SlusaPredmetID" class="form-control">
+            <option>(Odaberi)</option>
+
+            @foreach (var x in Model.SlusaPredmet)
+            {
+                @if (x.Value == Model.Izostanak.SlusaPredmetID.ToString())
+                {
+                    <option value="@x.Value" selected>@x.Text </option>
+                }
+                else
+                {
+                    <option value="@x.Value">@x.Text </option>
+                }
+            }
+        </select>
+    </div>
+    <br />
+
+    <div class="form-group">
+        Cas:<br />
+        <select name="CasID" class="form-control">
+            <option>(Odaberi cas)</option>
+
+            @foreach (var x in Model.Cas)
+            {
+                @if (x.Value == Model.Izostanak.CasID.ToString())
+                {
+                    <option value="@x.Value" selected>@x.Text </option>
+                }
+                else
+                {
+                    <option value="@x.Value">@x.Text </option>
+                }
+            }
+        </select>
+    </div>
+
+    <br /><br />
+    <input type="submit" class="btn btn-success" />
+</form>
+<br />
+<a href="/Izostanak/Prikaz" class="btn btn-secondary"> Nazad </a>
+
+
+

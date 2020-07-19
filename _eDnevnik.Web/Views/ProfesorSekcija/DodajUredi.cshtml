@@ -1,0 +1,22 @@
+﻿@model _eDnevnik.Web.ViewModel.SekcijaUcenikDodajUrediVM
+@{
+    ViewData["Title"] = "DodajUredi";
+}
+
+    <form id="formatest" asp-controller="ProfesorSekcija" asp-action="Snimi">
+
+        <input type="hidden" asp-for="@Model.UcenikSekcijaID" class="form-control"/>
+
+        <input type="hidden" asp-for="@Model.SekcijaID" class="form-control"/>
+
+        <select asp-for="@Model.UcenikID" asp-items="@Model.ucenici" class="form-control">
+            <option>Odaberite ucenika</option>
+        </select><br />
+
+        <input asp-for="@Model.DatumUclanjenja" class="form-control"/><br />
+        <input id="snimiSub" type="submit" value="Snimi" />
+    </form>
+
+
+
+

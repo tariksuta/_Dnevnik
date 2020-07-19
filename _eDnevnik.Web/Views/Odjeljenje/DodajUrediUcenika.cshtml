@@ -1,0 +1,35 @@
+﻿@model _eDnevnik.Web.ViewModel.OdjeljenjeDodajUrediUcenikaVM
+@{
+    ViewData["Title"] = "DodajUrediUcenika";
+}
+
+    <form action="/Odjeljenje/SnimiUcenika" ajax-rezultat="prikazUcenika" ajax-poziv="da">
+        <input type="text" hidden name="OdjeljenjeUcenikID" value="@Model.OdjeljenjeUcenikID" /><br />
+        <input type="text" hidden name="OdjeljenjeID" value="@Model.OdjeljenjeID" /><br />
+
+        <div class="form-group">
+            Broj u dnevniku:<br />
+            <input type="number" asp-for="BrojUDnevniku" value="@Model.BrojUDnevniku" readonly class="form-control" />
+        </div>
+        <br />
+
+        <div class="form-group">
+            Ucenik:<br />
+            <select asp-for="UcenikID" required asp-items="@Model.Ucenici" class="form-control">
+            </select>
+            <span asp-validation-for="UcenikID" class="text-danger"></span>
+        </div>
+        <br />
+
+            <!--da se može prebaciti učenik u drugo odjeljenje i automatski ga obriše iz postojećeg-->
+        @*<div class="form-group">
+            Odjeljenje:<br />
+            <select asp-for="OdjeljenjeID" asp-items="@Model.Odjeljenja" class="form-control">
+            </select>
+            <span asp-validation-for="OdjeljenjeID" class="text-danger"></span>
+        </div>
+        <br />*@
+
+        <input type="submit" class="btn btn-success" />
+    </form>
+

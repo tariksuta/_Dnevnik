@@ -1,0 +1,203 @@
+﻿@model _eDnevnik.Web.ViewModel.SekcijaUceniciPoSekcijamaVM
+@{
+    ViewData["Title"] = "UceniciPoSekcijama";
+}
+
+<div class="sidebar" data-color="purple" data-background-color="white" data-image="/assets/img/sidebar-3.jpg">
+    <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+    <div class="logo ">
+        <a href="/Home/Index" class="simple-text logo-normal">
+            eDnevnik
+        </a>
+    </div>
+
+
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+            <li class="nav-item ">
+                <a class="nav-link" href="/Home/Index">
+                    <i class="material-icons">dashboard</i>
+                    <p>Početna</p>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a class="nav-link" href="/Administrator/Prikaz">
+                    <!--Uvid u druge administratore-->
+                    <i class="material-icons">person</i>
+                    <p>Administratori</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/Login/Prikaz">
+                    <i class="material-icons">security</i>
+                    <p>Login</p>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/Profesor/Prikaz">
+                    <i class="material-icons">supervisor_account</i>
+                    <p>Profesori</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/Roditelj/Prikaz">
+                    <i class="material-icons">local_library</i>
+                    <p>Roditelji</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/Odjeljenje/Prikaz">
+                    <!--Unutra dodavanje u ucenika-->
+                    <i class="material-icons">collections_bookmark</i>
+                    <p>Odjeljenja</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/Ucenik/Prikaz">
+                    <i class="material-icons">school</i>
+                    <p>Učenici</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/Predmet/Prikaz">
+                    <i class="material-icons">translate</i>
+                    <p>Predmeti</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/SlusaPredmet/Prikaz">
+                    <i class="material-icons">input</i>
+                    <p>Zaključne ocjene</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/Predaje/Prikaz">
+                    <i class="material-icons">people</i>
+                    <p>Predavači</p>
+                </a>
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link" href="/Smjer/Prikaz">
+                    <i class="material-icons">directions</i>
+                    <p>Smjerovi</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/Vladanje/Prikaz">
+                    <i class="material-icons">policy</i>
+                    <p>Vladanja</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/Sekcija/PrikazSekcija">
+                    <!--Unutra dodavanje-->
+                    <i class="material-icons">color_lens</i>
+                    <p>Sekcije</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/SkolskaGodina/Prikaz">
+                    <i class="material-icons">date_range</i>
+                    <p>Školske godine</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/RasporedKonsultacija/Prikaz">
+                    <i class="material-icons">event_available</i>
+                    <p>Raspored konsultacija</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/Sjednica/Prikaz">
+                    <i class="material-icons">update</i>
+                    <p>Sjednice</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/Zapisnik/Prikaz">
+                    <i class="material-icons">receipt</i>
+                    <p>Zapisnici sa sjednica</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/Opcina/Prikaz">
+                    <i class="material-icons">where_to_vote</i>
+                    <p>Općine</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/Grad/Prikaz">
+                    <i class="material-icons">location_city</i>
+                    <p>Gradovi</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/Drzava/Prikaz">
+                    <i class="material-icons">language</i>
+                    <p>Države</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+    <!-- End Navbar -->
+    <div class="content">
+        <div class="container-fluid">
+            <!--body-->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Sekcije</h4>
+                            <p class="card-category">Učenici u sekciji</p>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table class="table table-hover">
+                                <thead class="text-primary">
+                                <tbody>
+                                    @foreach (var x in Model.ucenici)
+                                    {
+                                        <tr>
+                                            <td>@x.Ime</td>
+                                            <td>@x.Prezime</td>
+                                            <td>@x.DatumUclanjenja</td>
+                                            <td>@x.Razred</td>
+                                            <td>
+                                                <button ajax-url="/Sekcija/ObrisiUcenikSekcija?UcenikSekcijaID=@x.UcenikSekcijaID" ajax-rezultat="posebantest" ajax-poziv="da" class="btn btn-primary">Obrisi</button>
+                                                <button ajax-url="/Sekcija/DodajUredi?SekcijaID=@Model.SekcijaID&UcenikSekcijaID=@x.UcenikSekcijaID" ajax-rezultat="posebantest" class="btn btn-secondary" ajax-poziv="da">Uredi</button>
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+    <button ajax-url="/Sekcija/DodajUredi?SekcijaID=@Model.SekcijaID" ajax-rezultat="posebantest" class="btn btn-secondary" ajax-poziv="da">Dodaj</button> @* 1. KORAK   implementirati funkciju dodaj u sekicju ucenika*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        $(document).ready(function (p) {
+            $("button[ajax-poziv='da']").click(function (event) {
+                var btn = $(this);
+                var url = btn.attr("ajax-url");
+                var r = btn.attr("ajax-rezultat");
+                $.get(url, function (rezultat, status) {
+                    $("#" + r).html(rezultat);
+                });
+            });
+        });
+    </script>

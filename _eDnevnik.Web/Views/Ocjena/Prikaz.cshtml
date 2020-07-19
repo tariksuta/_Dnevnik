@@ -1,0 +1,41 @@
+﻿@model _eDnevnik.Web.ViewModel.OcjenaPrikazVM
+
+@{
+    ViewData["Title"] = "Prikaz";
+}
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>OcjenaOpisno</th>
+            <th>OcjenaBrojcano</th>
+            <th>DatumUnosaOcjene</th>
+            <th>SlusaPredmet</th>
+            <th>Cas</th>
+            <th style="text-align:center">Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in @Model.ListaOcjena)
+        {
+            <tr>
+                <td>@x.OcjenaID </td>
+                <td>@x.OcjenaOpisno </td>
+                <td>@x.OcjenaBrojcano </td>
+                <td>@x.DatumUnosaOcjene </td>
+                <td>@x.SlusaPredmet </td>
+                <td>@x.Cas </td>
+                <td style="vertical-align: middle; padding: .4rem;text-align:center">
+                    <a style="width:44%;" class="btn btn-primary" href="/Ocjena/DodajUredi?OcjenaID=@x.OcjenaID">Uredi</a>
+                    <a style="width:44%;" class="btn btn-danger" href="/Ocjena/Obrisi?OcjenaID=@x.OcjenaID">Obriši</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a style="width:13%;" href="/Ocjena/DodajUredi" class="btn btn-success">Dodaj</a>
+
+<a style="width:13%;" href="/Home/Index" class="btn btn-secondary"> Nazad </a>
+

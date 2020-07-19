@@ -1,0 +1,204 @@
+﻿@model _eDnevnik.Web.ViewModel.IzostanakPrikazVM
+@using Microsoft.AspNetCore.Http
+@using _eDnevnik.Web.Helper
+@using _eDnevnik.Data.EntityModel
+@using _eDnevnik.Data
+@using Microsoft.Extensions.DependencyInjection;
+
+@{
+    ViewData["Title"] = "Prikaz";
+    Login login = Context.GetLogiraniKorisnik();
+    MyDbContext _context = Context.RequestServices.GetService<MyDbContext>();
+}
+
+
+
+<div class="sidebar" data-color="purple" data-background-color="white" data-image="/assets/img/sidebar-3.jpg">
+    <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+    <div class="logo ">
+        <a href="/Home/Index" class="simple-text logo-normal">
+            eDnevnik
+        </a>
+    </div>
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+            <li class="nav-item  ">
+                <a class="nav-link" href="/Home/Index">
+                    <i class="material-icons">dashboard</i>
+                    <p>Početna</p>
+                </a>
+            </li>
+            @if (_context.Odjeljenje.Where(x => x.RazrednikID == _context.Profesor.Where(p => p.LoginID == login.ID).FirstOrDefault().ID).FirstOrDefault() != null)
+            {
+                <li class="nav-item  active">
+                    <a class="nav-link" href="/Razrednik/Index">
+                        <i class="material-icons">
+                            how_to_reg
+                        </i>
+                        <p>Razrednik</p>
+                    </a>
+                </li>
+            }
+            <li class="nav-item ">
+                <a class="nav-link" href="/ProfesorSekcija/Prikaz">
+                    <i class="material-icons">color_lens</i>
+                    <p>Sekcija</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/ProfesorCas/Prikaz">
+                    <i class="material-icons">alarm_on</i>
+                    <p>Cas</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/ProfesorOdjeljenje/Prikaz">
+                    <i class="material-icons">collections_bookmark</i>
+                    <p>Odjeljenje</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/ProfesorProfesor/PrikaziSveProfesore">
+                    <i class="material-icons">supervisor_account</i>
+                    <p>Profesori</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/ProfesorRasporedKonsultacija/Prikaz">
+                    <i class="material-icons">event_available</i>
+                    <p>Raspored konsultacija</p>
+                </a>
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link" href="/ProfesorOcjena/Prikaz">
+                    <i class="material-icons">edit</i>
+                    <p>Ocjene</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/ProfesorIzostanak/Prikaz">
+                    <i class="material-icons">event_busy</i>
+                    <p>Izostanci</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/ProfesorZapisnik/Prikaz">
+                    <i class="material-icons">receipt</i>
+                    <p>Zapisnici</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/ProfesorSjednica/Prikaz">
+                    <i class="material-icons">update</i>
+                    <p>Sjednica</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="main-panel">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+            <div class="navbar-wrapper">
+                <a class="navbar-brand" href="#pablo">@*Dobro došli @login.KorisnickoIme !*@ </a><!--tu cemokorisnicko ime-->
+            </div>
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon icon-bar"></span>
+                <span class="navbar-toggler-icon icon-bar"></span>
+                <span class="navbar-toggler-icon icon-bar"></span>
+            </button><!--na smanjenom ekranu ikonica-->
+            <!------------------------------------------------------------------------------------------>
+            <div class="collapse navbar-collapse justify-content-end">
+                <form class="navbar-form">
+                </form>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">person</i>
+                            <p class="d-lg-none d-md-block">
+                                Account
+                            </p>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                            <a class="dropdown-item" href="/ProfesorProfesor/Info">Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/Autentifikacija/Logout">Log out</a>
+                        </div>
+                    </li>
+                </ul><!-- ikonica u cosi za log out-->
+            </div>
+            <!------------------------------------------------------------------------------------------>
+        </div>
+    </nav>
+
+    <!-- End Navbar -->
+    <div class="content">
+        <div class="container-fluid">
+            <!--body-->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Izostanci</h4>
+                            <p class="card-category"></p>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table class="table table-bordered" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Napomena</th>
+                                        <th>DatumIzostanka</th>
+                                        <th>Opravdan</th>
+                                        <th>Broj u dnevniku</th>
+                                        <th>Cas</th>
+                                        <th>Akcija</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var x in @Model.ListaIzostanaka)
+                                    {
+                                        <tr>
+                                            <td>@x.IzostanakID </td>
+                                            <td>@x.Napomena </td>
+                                            <td>@x.DatumIzostanka </td>
+                                            <td>@(x.Opravdan ? "Opravdan" : "Neopravdan") </td>
+                                            <td>@x.SlusaPredmet </td>
+                                            <td>@x.Cas </td>
+                                            <td>
+                                                <a class="btn btn-primary" href="/RazrednikIzostanak/DodajUredi?IzostanakID=@x.IzostanakID">Uredi</a>
+                                                
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <a href="/Razrednik/Index" class="btn btn-primary">Nazad</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <!--body-->
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    </footer>
+</div>
+
+

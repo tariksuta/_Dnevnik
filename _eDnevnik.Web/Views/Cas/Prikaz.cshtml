@@ -1,0 +1,39 @@
+﻿@model _eDnevnik.Web.ViewModel.CasPrikazVM
+@{
+    ViewData["Title"] = "Prikaz";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Broj casa</th>
+            <th>Nastavna jedinica</th>
+            <th>Datum održavanja</th>
+            <th>Predmet</th>
+            <th>Odjeljenje</th>
+            <th>Profesor</th>
+            <th colspan="2">Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.casovi)
+        {
+        <tr>
+            <td>@x.BrojCasa</td>
+            <td>@x.NastavnaJedinica</td>
+            <td>@x.DatumOdrzavanja</td>
+            <td>@x.Predmet</td>
+            <td>@x.Odjeljenje</td>
+            <td>@x.Profesor</td>
+            <td>
+                <a href="/Cas/DodajUredi?CasID=@x.CasID">Uredi</a>
+                <a href="/Cas/Obrisi?CasID=@x.CasID">Obrisi</a>
+
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Cas/DodajUredi" class="btn btn-secondary">Dodaj</a>
+

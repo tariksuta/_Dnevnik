@@ -1,0 +1,47 @@
+﻿@model _eDnevnik.Web.ViewModel.SekcijaUceniciPoSekcijamaVM
+@{
+    ViewData["Title"] = "UceniciPoSekcijama";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ime </th>
+            <th>Prezime</th>
+            <th>Datum uclanjenja</th>
+            <th>Razred</th>
+            <th colspan="2">Akcija</th> @* 2. KORAK  uredi , obrisi*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.ucenici)
+        {
+        <tr>
+            <td>@x.Ime</td>
+            <td>@x.Prezime</td>
+            <td>@x.DatumUclanjenja</td>
+            <td>@x.Razred</td>
+            <td>
+                <button ajax-url="/ProfesorSekcija/ObrisiUcenikSekcija?UcenikSekcijaID=@x.UcenikSekcijaID" ajax-rezultat="posebantest" ajax-poziv="da" class="btn btn-primary">Obrisi</button>
+                <button ajax-url="/ProfesorSekcija/DodajUredi?SekcijaID=@Model.SekcijaID&UcenikSekcijaID=@x.UcenikSekcijaID" ajax-rezultat="posebantest" class="btn btn-secondary" ajax-poziv="da">Uredi</button>
+
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<button ajax-url="/ProfesorSekcija/DodajUredi?SekcijaID=@Model.SekcijaID" ajax-rezultat="posebantest" class="btn btn-secondary" ajax-poziv="da">Dodaj</button> @* 1. KORAK   implementirati funkciju dodaj u sekicju ucenika*@
+
+<script>
+     $(document).ready(function (p) {
+        $("button[ajax-poziv='da']").click(function (event) {
+            var btn = $(this);
+            var url = btn.attr("ajax-url");
+            var r = btn.attr("ajax-rezultat");
+            $.get(url, function (rezultat, status) {
+                $("#" + r).html(rezultat);
+            });
+        });
+    });
+</script>

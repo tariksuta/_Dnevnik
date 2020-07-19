@@ -1,0 +1,41 @@
+﻿@model _eDnevnik.Web.ViewModel.IzostanakPrikazVM
+
+@{
+    ViewData["Title"] = "Prikaz";
+}
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Napomena</th>
+            <th>DatumIzostanka</th>
+            <th>Opravdan</th>
+            <th>SlusaPredmet</th>
+            <th>Cas</th>
+            <th style="text-align:center">Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in @Model.ListaIzostanaka)
+        {
+            <tr>
+                <td>@x.IzostanakID </td>
+                <td>@x.Napomena </td>
+                <td>@x.DatumIzostanka </td>
+                <td>@(x.Opravdan?"Opravdan":"Neopravdan") </td>
+                <td>@x.SlusaPredmet </td>
+                <td>@x.Cas </td>
+                <td style="vertical-align: middle; padding: .4rem;text-align:center">
+                    <a style="width:44%;" class="btn btn-primary" href="/Izostanak/DodajUredi?IzostanakID=@x.IzostanakID">Uredi</a>
+                    <a style="width:44%;" class="btn btn-danger" href="/Izostanak/Obrisi?IzostanakID=@x.IzostanakID">Obriši</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a style="width:13%;" href="/Izostanak/DodajUredi" class="btn btn-success">Dodaj</a>
+
+<a style="width:13%;" href="/Home/Index" class="btn btn-secondary"> Nazad </a>
+

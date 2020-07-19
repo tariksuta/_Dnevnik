@@ -1,0 +1,12 @@
+C:\Users\Tarik\Desktop\webapp\_eDnevnik\_eDnevnik.Data\bin\Debug\netcoreapp3.0\_eDnevnik.Data.deps.json
+C:\Users\Tarik\Desktop\webapp\_eDnevnik\_eDnevnik.Data\bin\Debug\netcoreapp3.0\_eDnevnik.Data.runtimeconfig.json
+C:\Users\Tarik\Desktop\webapp\_eDnevnik\_eDnevnik.Data\bin\Debug\netcoreapp3.0\_eDnevnik.Data.runtimeconfig.dev.json
+C:\Users\Tarik\Desktop\webapp\_eDnevnik\_eDnevnik.Data\bin\Debug\netcoreapp3.0\_eDnevnik.Data.dll
+C:\Users\Tarik\Desktop\webapp\_eDnevnik\_eDnevnik.Data\bin\Debug\netcoreapp3.0\_eDnevnik.Data.pdb
+C:\Users\Tarik\Desktop\webapp\_eDnevnik\_eDnevnik.Data\obj\Debug\netcoreapp3.0\_eDnevnik.Data.csprojAssemblyReference.cache
+C:\Users\Tarik\Desktop\webapp\_eDnevnik\_eDnevnik.Data\obj\Debug\netcoreapp3.0\_eDnevnik.Data.csproj.CoreCompileInputs.cache
+C:\Users\Tarik\Desktop\webapp\_eDnevnik\_eDnevnik.Data\obj\Debug\netcoreapp3.0\_eDnevnik.Data.AssemblyInfoInputs.cache
+C:\Users\Tarik\Desktop\webapp\_eDnevnik\_eDnevnik.Data\obj\Debug\netcoreapp3.0\_eDnevnik.Data.AssemblyInfo.cs
+C:\Users\Tarik\Desktop\webapp\_eDnevnik\_eDnevnik.Data\obj\Debug\netcoreapp3.0\_eDnevnik.Data.dll
+C:\Users\Tarik\Desktop\webapp\_eDnevnik\_eDnevnik.Data\obj\Debug\netcoreapp3.0\_eDnevnik.Data.pdb
+C:\Users\Tarik\Desktop\webapp\_eDnevnik\_eDnevnik.Data\obj\Debug\netcoreapp3.0\_eDnevnik.Data.genruntimeconfig.cache

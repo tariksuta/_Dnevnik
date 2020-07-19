@@ -1,0 +1,23 @@
+﻿@model _eDnevnik.Web.ViewModel.CasDodajUrediVM
+@{
+    ViewData["Title"] = "DodajUredi";
+}
+
+    <form asp-controller="Cas" asp-action="Snimi">
+        <input type="hidden" asp-for="@Model.CasID" /><br />
+        <input type="hidden" asp-for="@Model.ProfesorID" /><br />
+        <label>
+            Broj casa
+        </label><br />
+        <input asp-for="@Model.BrojCasa" /><br />
+        <label>Nastavna jedinica</label><br />
+        <input asp-for="@Model.NastavnaJedinica" /><br />
+        <label>Datum odrzavanja</label><br />
+        <input asp-for="@Model.DatumOdrzavanja" /><br />
+        <label>predaje</label><br />
+        <select asp-for="@Model.PredajeID" asp-items="@Model.predaje">
+            <option>Odaberi</option>
+        </select><br />
+        <input type="submit" />
+    </form>
+

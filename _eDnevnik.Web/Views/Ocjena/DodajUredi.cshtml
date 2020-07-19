@@ -1,0 +1,77 @@
+﻿@using _eDnevnik.Data.EntityModel
+@model _eDnevnik.Web.ViewModel.OcjenaDodajUrediVM
+@{
+    ViewData["Title"] = "DodajUredi";
+}
+
+
+<form action="/Ocjena/Snimi">
+    <input type="text" hidden name="OcjenaID" value="@Model.Ocjena.ID" /><br />
+
+
+
+    <div class="form-group">
+        Ocjena opisno:<br />
+        <input type="text" name="OcjenaOpisno" value="@Model.Ocjena.OcjenaOpisno" class="form-control" />
+    </div>
+    <br />
+
+    <div class="form-group">
+        Ocjena brojcano:<br />
+        <input type="number" name="OcjenaBrojcano" value="@Model.Ocjena.OcjenaBrojcano" class="form-control" />
+    </div>
+    <br />
+
+    <div class="form-group">
+        Datum unosa ocjene:<br />
+        <input type="date" name="DatumUnosaOcjene" value="@Model.Ocjena.DatumUnosaOcjene" class="form-control" />
+    </div>
+    <br />
+
+    <div class="form-group">
+        Slusa predmet:<br />
+        <select name="SlusaPredmetID" class="form-control">
+            <option>(Odaberi)</option>
+
+            @foreach (var x in Model.SlusaPredmet)
+            {
+                @if (x.Value == Model.Ocjena.SlusaPredmetID.ToString())
+                {
+                    <option value="@x.Value" selected>@x.Text </option>
+                }
+                else
+                {
+                    <option value="@x.Value">@x.Text </option>
+                }
+            }
+        </select>
+    </div>
+    <br />
+
+    <div class="form-group">
+        Cas:<br />
+        <select name="CasID" class="form-control">
+            <option>(Odaberi cas)</option>
+
+            @foreach (var x in Model.Cas)
+            {
+                @if (x.Value == Model.Ocjena.CasID.ToString())
+                {
+                    <option value="@x.Value" selected>@x.Text </option>
+                }
+                else
+                {
+                    <option value="@x.Value">@x.Text </option>
+                }
+            }
+        </select>
+    </div>
+
+    <br /><br />
+    <input type="submit" class="btn btn-success" />
+</form>
+<br />
+<a href="/Ocjena/Prikaz" class="btn btn-secondary"> Nazad </a>
+
+
+
